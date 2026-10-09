@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arsenal de Skills</title>
+<meta name="description" content="109 skills y repos para que Claude diseñe, planifique y programe sitios web animados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0f;--fg:#ecebe6;--mute:#8a8a93;--line:#24242c;--a1:#ff5b2e;--a2:#7c5cff;--a3:#2ee6a6;--card:#121218}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f4f2ec;--fg:#121216;--mute:#5d5d66;--line:#dcd8cd;--card:#fbfaf6}}
+:root[data-theme="dark"]{--bg:#0b0b0f;--fg:#ecebe6;--mute:#8a8a93;--line:#24242c;--card:#121218}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.55 "Inter Tight",system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}
+#bg{position:fixed;inset:0;z-index:-1;opacity:.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 70%,transparent)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;font:400 13px "JetBrains Mono",monospace}
+nav a{text-decoration:none;margin-left:20px;color:var(--mute)}nav a:hover{color:var(--fg)}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:56px}
+.eyebrow{font:400 13px "JetBrains Mono",monospace;color:var(--a1);letter-spacing:.08em;text-transform:uppercase}
+h1{font:400 clamp(56px,11vw,168px)/.9 "Instrument Serif",serif;letter-spacing:-.03em;margin:20px 0}
+h1 em{font-style:italic;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.line{display:block;overflow:hidden}.line span{display:inline-block}
+.lead{max-width:560px;color:var(--mute);font-size:19px}
+.stats{display:flex;gap:48px;margin-top:48px;flex-wrap:wrap}
+.stat b{display:block;font:400 64px/1 "Instrument Serif",serif}
+.stat small{font:400 12px "JetBrains Mono",monospace;color:var(--mute);text-transform:uppercase}
+.marquee{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:18px 0;font:400 28px "Instrument Serif",serif}
+.marquee div{display:inline-block;animation:mq 40s linear infinite}
+.marquee span{margin:0 28px;color:var(--mute)}.marquee span:nth-child(3n){color:var(--fg);font-style:italic}
+@keyframes mq{to{transform:translateX(-50%)}}
+section.cat{padding:140px 0 60px}
+.cat h2{font:400 clamp(44px,7vw,96px)/1 "Instrument Serif",serif;letter-spacing:-.02em}
+.cat .num{font:400 13px "JetBrains Mono",monospace;color:var(--mute)}
+.cat p.desc{color:var(--mute);max-width:520px;margin:16px 0 40px}
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filter button{font:400 12px "JetBrains Mono",monospace;background:none;color:var(--mute);border:1px solid var(--line);padding:8px 14px;border-radius:99px;cursor:pointer;transition:.2s}
+.filter button[aria-pressed="true"],.filter button:hover{color:var(--bg);background:var(--fg);border-color:var(--fg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.card{background:var(--card);padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:10px;min-height:150px;position:relative;overflow:hidden;transition:background .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at var(--x,50%) var(--y,50%),color-mix(in srgb,var(--c) 22%,transparent),transparent 60%);opacity:0;transition:opacity .3s}
+.card:hover::before{opacity:1}
+.card .tag{font:400 11px "JetBrains Mono",monospace;color:var(--c);text-transform:uppercase;letter-spacing:.06em}
+.card h3{font:500 16px "Inter Tight";word-break:break-word}
+.card p{font-size:14px;color:var(--mute);flex:1}
+.card .arr{position:absolute;top:20px;right:20px;transition:transform .3s}.card:hover .arr{transform:translate(4px,-4px)}
+.stack{padding:140px 0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:40px}
+.step{border-top:2px solid var(--fg);padding-top:16px}
+.step b{font:400 40px "Instrument Serif",serif;display:block}
+.step p{color:var(--mute);font-size:14px}
+footer{border-top:1px solid var(--line);padding:40px 0;font:400 12px "JetBrains Mono",monospace;color:var(--mute)}
+@media (prefers-reduced-motion:reduce){.marquee div{animation:none}}
+@media (max-width:600px){nav a:not(:last-child){display:none}.stats{gap:28px}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<nav><div class="wrap"><span>◐ arsenal.skills</span><div><a href="#web">web</a><a href="#plan">planear</a><a href="#code">código</a></div></div></nav>
+
+<header class="hero wrap">
+  <div class="eyebrow">24 agentes · 109 repos · 2026</div>
+  <h1><span class="line"><span>El arsenal</span></span><span class="line"><span>para que Claude</span></span><span class="line"><span><em>construya magia.</em></span></span></h1>
+  <p class="lead">Skills curadas para diseñar con criterio, animar con intención, planificar como un arquitecto y programar sin romper nada.</p>
+  <div class="stats">
+    <div class="stat"><b data-n="40">0</b><small>skills web</small></div>
+    <div class="stat"><b data-n="32">0</b><small>planificación</small></div>
+    <div class="stat"><b data-n="37">0</b><small>código</small></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div id="mq"></div></div>
+
+<main class="wrap" id="cats"></main>
+
+<section class="stack wrap">
+  <div class="eyebrow">Receta</div>
+  <h2 class="cat" style="font:400 clamp(44px,7vw,96px)/1 'Instrument Serif',serif">Stack para una super página</h2>
+  <div class="steps">
+    <div class="step"><b>01</b><p><strong>Planificar:</strong> spec-kit o superpowers + context7</p></div>
+    <div class="step"><b>02</b><p><strong>Diseñar:</strong> ui-ux-pro-max + taste-skill + impeccable</p></div>
+    <div class="step"><b>03</b><p><strong>Animar:</strong> genjutsu + gsap-skills + magic-mcp</p></div>
+    <div class="step"><b>04</b><p><strong>Construir:</strong> vercel agent-skills + shadcn MCP</p></div>
+    <div class="step"><b>05</b><p><strong>Verificar:</strong> playwright + devtools + lighthouse</p></div>
+  </div>
+</section>
+<footer><div class="wrap">Hecho con GSAP · ScrollTrigger · Canvas — catálogo completo en SKILLS.md</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const D={
+web:{t:"Sitios web con IA",d:"Diseño con gusto, animación, 3D, componentes y QA. Se complementan entre sí.",c:"var(--a1)",items:[
+["Diseño","nextlevelbuilder/ui-ux-pro-max-skill","Inteligencia de diseño UI/UX pro"],["Diseño","Leonxlnx/taste-skill","Elimina el AI slop genérico"],["Diseño","pbakaus/impeccable","Lenguaje de diseño para agentes"],["Diseño","anthropics/skills","frontend-design, theme-factory, canvas"],["Diseño","h3nryprod01/design-taste","Tipografía, color, motion"],["Diseño","JaimeJunr/claude-code-frontend-skills","Marketplace de skills frontend"],["Diseño","Bbasche/design-review","Revisión como director de diseño"],["Diseño","ihlamury/design-skills","Reglas de design systems top"],["Diseño","uxKero/anydesign","Imagen/URL → design.md"],["Diseño","Manavarya09/design-extract","Extrae design system de una web"],["Diseño","MengTo/Skills","Skills de diseño web"],
+["Motion","AThevon/genjutsu","GSAP, Motion, Three.js"],["Motion","iart-ai/web-animation-skills","SVG, Lottie, transiciones"],["Motion","frankxai/awesome-motion-design-agent-skills","Lista de motion skills"],["Motion","yuzhang-ai/web-animation-skill","Best practices de animación"],["Motion","armel474/gsap-skills","GSAP + ScrollTrigger"],["Motion","jonathanhatchi/framer-motion-skill","Framer Motion v12"],["Motion","AIwithhassan/lets-scroll","Landings fly-through"],["Motion","agiwhitelist/auteur","Sitios como películas"],
+["3D","viettranx/3dviz-pro-max","Three.js / Blender"],["3D","skinnye/3d-web-pack","R3F, WebGPU"],["3D","camilleroux/genart-skill","Arte generativo"],["3D","hassancs91/claude-image-generation","Generación de imágenes"],["3D","alonw0/web-asset-generator","Favicons e imágenes OG"],
+["UI","21st-dev/magic-mcp","10k componentes React"],["UI","Jpisnice/shadcn-ui-mcp-server","Contexto shadcn/ui"],["UI","magicuidesign/magicui","Componentes animados"],["UI","vercel-labs/agent-skills","Next.js best practices"],["UI","incluud/astro-agent-skills","Astro"],["UI","spences10/svelte-skills-kit","SvelteKit"],["UI","jezweb/claude-skills","Tailwind v4"],
+["Marca","plugin87/ux-ui-agent-skills","Tokens y WCAG 2.2"],["Marca","senlindesign/claude2figma","Claude ↔ Figma"],["Marca","rampstackco/claude-skills","59 skills marca/SEO"],["Marca","vstorm-co/content-skills","Copywriting"],
+["QA","microsoft/playwright-mcp","Automatización navegador"],["QA","ChromeDevTools/chrome-devtools-mcp","Rendimiento y debug"],["QA","danielsogl/lighthouse-mcp-server","Lighthouse"],["QA","priyankark/a11y-mcp","Accesibilidad"],["QA","JeffLi1993/seo-audit-skill","SEO técnico"]]},
+plan:{t:"Planificar",d:"Specs, PRDs, tareas, arquitectura, memoria e investigación antes de escribir una línea.",c:"var(--a2)",items:[
+["Spec","github/spec-kit","specify → plan → tasks"],["Spec","Fission-AI/OpenSpec","SDD ligero"],["Spec","bmad-code-org/BMAD-METHOD","Agentes PM/arquitecto"],["Spec","gemini-cli-extensions/conductor","Specify/plan/implement"],["Spec","Pimzino/claude-code-spec-workflow","Req → diseño → tareas"],["Spec","shotgun-sh/shotgun","Specs con contexto del código"],["Spec","wirelessr/kiro-workflow-prompts","Flujo Kiro"],["Spec","sudokar/openspec-plus","Extiende OpenSpec"],["Spec","hllj/sdd-superpowers","9 skills encadenadas"],
+["Flujo","obra/superpowers","Brainstorm, plan, execute"],["Flujo","gsd-build/get-shit-done","Meta-prompting"],["Flujo","docutray/devflow-skill","Épicas y specs"],["Flujo","clankercode/ultra-skills","Planes jerárquicos"],["Flujo","EveryInc/claude_commands","Planes de implementación"],
+["Tareas","eyaltoledano/claude-task-master","PRD → tareas"],["Tareas","automazeio/ccpm","PRD → Issues"],["Tareas","cjo4m06/mcp-shrimp-task-manager","Dependencias"],["Tareas","lazzyms/prd-erd-skills","Idea → PRD → ERD"],["Tareas","Vann4799/ai-prd-generator","PRD por entrevista"],["Tareas","WaitesWireless/claude-product-management-plugin","PR/FAQ, BRD"],
+["ADR","jhagberg/skill-adr-rfcs","ADR y RFC"],["ADR","EvolveHQ/docflow","Docs basadas en ADR"],["ADR","architecture-decision-record/architecture-decision-record","Plantillas ADR"],
+["Memoria","upstash/context7","Docs actualizadas"],["Memoria","thedotmack/claude-mem","Memoria entre sesiones"],["Memoria","coleam00/context-engineering-intro","Context engineering"],["Memoria","vanzan01/cursor-memory-bank","Memory bank modular"],["Memoria","modelcontextprotocol/servers","Sequential Thinking"],
+["Research","exa-labs/exa-mcp-server","Búsqueda web"],["Research","firecrawl/firecrawl-mcp-server","Scraping"],["Research","Socialpranker/deepdive","Deep research"],["Research","ruvnet/ruflo","Enjambres multi-agente"]]},
+code:{t:"Escribir código",d:"Calidad, agentes, reglas, backend, MCPs y herramientas para programar mejor.",c:"var(--a3)",items:[
+["Oficial","anthropics/claude-code","Claude Code + plugins"],["Oficial","anthropics/claude-plugins-official","Plugins oficiales"],["Oficial","anthropics/claude-cookbooks","Recetas"],["Oficial","anthropics/claude-code-security-review","Seguridad en PRs"],["Oficial","anthropics/claude-code-action","GitHub Actions"],
+["Calidad","obra/superpowers-marketplace","TDD y debugging"],["Calidad","LerianStudio/ring","89 skills de calidad"],["Calidad","multica-ai/andrej-karpathy-skills","CLAUDE.md Karpathy"],["Calidad","affaan-m/ECC","Everything Claude Code"],["Calidad","trailofbits/skills","Auditoría seguridad"],["Calidad","lackeyjb/playwright-skill","Tests e2e"],
+["Agentes","wshobson/agents","202 agentes"],["Agentes","VoltAgent/awesome-claude-code-subagents","100+ subagentes"],["Agentes","contains-studio/agents","Por departamento"],["Agentes","SuperClaude-Org/SuperClaude_Framework","Comandos y personas"],["Agentes","davila7/claude-code-templates","Plantillas CLI"],["Agentes","disler/claude-code-hooks-mastery","Hooks"],["Agentes","UfoMiao/zcf","Zero-config"],
+["Reglas","PatrickJS/awesome-cursorrules","Reglas por lenguaje"],["Reglas","centminmod/my-claude-code-setup","Memory bank"],["Reglas","luongnv89/claude-howto","Guía visual"],["Reglas","CreatmanCEO/claude-code-antiregression-setup","Anti-regresión"],
+["Backend","stripe/ai","Stripe"],["Backend","cloudflare/skills","Workers, D1, R2"],["Backend","supabase/agent-skills","Postgres y auth"],
+["MCP","github/github-mcp-server","GitHub"],["MCP","oraios/serena","Edición semántica"],["MCP","bytebase/dbhub","Bases de datos"],["MCP","timescale/pg-aiguide","Postgres"],["MCP","docker/mcp-gateway","MCP en Docker"],
+["Tools","ccusage/ccusage","Costos de tokens"],["Tools","musistudio/claude-code-router","Multi-modelo"],["Tools","smtg-ai/claude-squad","Agentes en paralelo"],["Tools","winfunc/opcode","GUI"],["Tools","sirmalloc/ccstatusline","Statusline"],
+["Índice","hesreallyhim/awesome-claude-code","Lista curada"],["Índice","VoltAgent/awesome-agent-skills","1000+ skills"]]}};
+
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const main=document.getElementById("cats");let i=0;
+for(const[k,v]of Object.entries(D)){i++;
+  const tags=["Todos",...new Set(v.items.map(x=>x[0]))];
+  const s=document.createElement("section");s.className="cat";s.id=k;s.style.setProperty("--c",v.c);
+  s.innerHTML=`<div class="num">0${i} / ${v.items.length} repos</div><h2 class="reveal">${v.t}</h2><p class="desc">${v.d}</p>
+  <div class="filter">${tags.map((t,j)=>`<button aria-pressed="${!j}" data-t="${t}">${t}</button>`).join("")}</div>
+  <div class="grid">${v.items.map(([t,r,d])=>`<a class="card" data-t="${t}" style="--c:${v.c}" href="https://github.com/${r}" target="_blank" rel="noopener"><span class="tag">${esc(t)}</span><h3>${esc(r)}</h3><p>${esc(d)}</p><span class="arr">↗</span></a>`).join("")}</div>`;
+  main.appendChild(s);
+  s.querySelectorAll(".filter button").forEach(b=>b.onclick=()=>{
+    s.querySelectorAll(".filter button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    s.querySelectorAll(".card").forEach(c=>c.style.display=(b.dataset.t==="Todos"||c.dataset.t===b.dataset.t)?"":"none");
+    window.ScrollTrigger&&ScrollTrigger.refresh();});
+}
+document.addEventListener("pointermove",e=>{const c=e.target.closest(".card");if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty("--x",e.clientX-r.left+"px");c.style.setProperty("--y",e.clientY-r.top+"px");});
+const words=Object.values(D).flatMap(v=>v.items.map(x=>x[1].split("/")[1])).slice(0,30);
+document.getElementById("mq").innerHTML=[...words,...words].map(w=>`<span>${esc(w)}</span>`).join("");
+
+// Canvas: campo de partículas que fluye
+const cv=document.getElementById("bg"),cx=cv.getContext("2d");let W,H,P=[];
+const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(90,W/12)},()=>({x:Math.random()*W,y:Math.random()*H,v:Math.random()*.4+.1,h:[18,255,160][Math.random()*3|0]}))};
+rs();addEventListener("resize",rs);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+(function loop(t){cx.clearRect(0,0,W,H);for(const p of P){const a=Math.sin(p.x*.004+t*.0003)+Math.cos(p.y*.004);p.x+=Math.cos(a)*p.v;p.y+=Math.sin(a)*p.v;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;cx.fillStyle=`hsla(${p.h},90%,60%,.7)`;cx.beginPath();cx.arc(p.x,p.y,1.4,0,7);cx.fill();}
+for(let a=0;a<P.length;a++)for(let b=a+1;b<P.length;b++){const dx=P[a].x-P[b].x,dy=P[a].y-P[b].y,d=dx*dx+dy*dy;if(d<9000){cx.strokeStyle=`hsla(${P[a].h},80%,60%,${.15*(1-d/9000)})`;cx.beginPath();cx.moveTo(P[a].x,P[a].y);cx.lineTo(P[b].x,P[b].y);cx.stroke();}}
+if(!reduce)requestAnimationFrame(loop)})(0);
+
+// GSAP
+if(window.gsap&&!reduce){gsap.registerPlugin(ScrollTrigger);
+  gsap.from("h1 .line span",{yPercent:110,duration:1.1,ease:"expo.out",stagger:.12});
+  gsap.from(".eyebrow,.lead,.stat",{opacity:0,y:20,duration:.9,delay:.5,stagger:.08});
+  document.querySelectorAll("[data-n]").forEach(el=>{const o={v:0};gsap.to(o,{v:+el.dataset.n,duration:2,delay:.7,ease:"power3.out",onUpdate:()=>el.textContent=Math.round(o.v)})});
+  gsap.utils.toArray("section.cat").forEach(s=>{
+    gsap.from(s.querySelector("h2"),{scrollTrigger:{trigger:s,start:"top 80%"},y:80,opacity:0,duration:1,ease:"expo.out"});
+    gsap.from(s.querySelectorAll(".card"),{scrollTrigger:{trigger:s.querySelector(".grid"),start:"top 85%"},y:40,opacity:0,duration:.6,stagger:.03,ease:"power2.out"});});
+  gsap.from(".step",{scrollTrigger:{trigger:".steps",start:"top 85%"},y:50,opacity:0,stagger:.12,duration:.8});
+  gsap.to("#bg",{scrollTrigger:{scrub:true},filter:"hue-rotate(120deg)"});
+}else document.querySelectorAll("[data-n]").forEach(el=>el.textContent=el.dataset.n);
+</script>
+</body>
+</html>
