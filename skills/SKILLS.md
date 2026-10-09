@@ -2,6 +2,8 @@
 
 Investigado por 24 agentes el 2026-10-09. Las estrellas son aproximadas. Los repos con pocas estrellas son nuevos o experimentales, así que revísalos antes de instalarlos.
 
+**Ya instalados en este repo (`.claude/skills/`):** frontend-design (Anthropic), taste-skill, impeccable y los 7 skills de ui-ux-pro-max (design, design-system, ui-styling, brand, banner-design, slides, ui-ux-pro-max), cada uno con su LICENSE. Claude los carga automáticamente al trabajar en este proyecto. `skills/index.html` se rediseñó aplicándolos: frontend-design (plan de tokens y un solo gesto memorable), taste-skill (patrón de scroll horizontal 5.B y lista de clichés prohibidos) y el módulo tells de genjutsu.
+
 **Instalar una skill:** clona el repo y copia la carpeta que contiene `SKILL.md` a `~/.claude/skills/` (o a `.claude/skills/` del proyecto). Los plugins se instalan con `/plugin marketplace add owner/repo`.
 
 ---
